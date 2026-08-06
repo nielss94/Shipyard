@@ -1,0 +1,82 @@
+name: Something is broken
+description: A build failed, an upload failed, or the app did something it should not
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before anything else: **Help → Collect diagnostics** in the app writes one file with
+        everything needed to understand this, already stripped of passwords and Steam
+        tokens. Attaching it is worth more than anything you can type below.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you got instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: message
+    attributes:
+      label: What it said
+      description: >
+        The error from the Console button at the right of the task bar, if there was one.
+        Paste the text rather than a screenshot where you can.
+      render: text
+
+  - type: input
+    id: version
+    attributes:
+      label: Shipyard version
+      description: From Help → About Shipyard.
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS (Apple Silicon)
+        - macOS (Intel)
+    validations:
+      required: true
+
+  - type: input
+    id: unity
+    attributes:
+      label: Unity version
+      placeholder: "6000.5.3f1"
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Where it went wrong
+      options:
+        - Setting up a project
+        - Doctor or the setup checklist
+        - Building
+        - Importing a build from another machine
+        - Signing in to Steam
+        - Publishing
+        - Somewhere else
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: diagnostics
+    attributes:
+      label: Diagnostics
+      options:
+        - label: I have attached a diagnostics bundle, or checked it and would rather not
+
+  - type: markdown
+    attributes:
+      value: |
+        **Do not paste a password, a Steam Guard code or a login token here.** If you think
+        one leaked into a log or a bundle, that is a security issue: see SECURITY.md and
+        report it privately instead.

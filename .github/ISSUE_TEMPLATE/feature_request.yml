@@ -1,0 +1,37 @@
+name: Suggest something
+description: An idea for how Shipyard could work better
+labels: [idea]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Shipyard is deliberately small. Some things are permanently out of scope: telemetry,
+        accounts, cloud sync, auto-update, running on a build server, and targets other than
+        Windows, macOS and Linux. Suggestions in those areas will be closed, not because
+        they are bad but because they are a different product.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is awkward today
+      description: >
+        The situation you are actually in, rather than the feature you have in mind. What
+        you are working around is usually more useful than the solution you arrived at.
+    validations:
+      required: true
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: What you think would help
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Both

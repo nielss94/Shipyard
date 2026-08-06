@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Something looks like a security problem
+    url: https://github.com/nielss94/Shipyard/security/advisories/new
+    about: Report it privately instead of opening an issue. See SECURITY.md.
+  - name: How do I use this?
+    url: https://github.com/nielss94/Shipyard#readme
+    about: The README is the full guide, and Help inside the app answers why it behaves as it does.
