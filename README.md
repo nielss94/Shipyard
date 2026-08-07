@@ -1,6 +1,8 @@
 <div align="center">
 
-# 🚢 Shipyard
+<img src=".github/assets/icon.png" alt="Shipyard" width="128" height="128">
+
+# Shipyard
 
 ### Build your Unity game and ship it to Steam. From your own machine, in a few clicks.
 
