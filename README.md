@@ -298,6 +298,10 @@ because it turned out to be useful, not because it comes with a support contract
 reports are read and appreciated; there is no promise about how fast. A diagnostics bundle
 attached to a report is worth more than anything else you can send.
 
+If Shipyard saved you an afternoon and you feel like buying the coffee that went into it,
+there is a [Ko-fi](https://ko-fi.com/codedeckcoffee). Entirely optional, and it changes
+nothing: the tool is free, has no paid version, and will stay that way.
+
 ---
 
 ## Questions people ask
