@@ -20,7 +20,7 @@
 
 ---
 
-Publishing a Unity game to Steam by hand is a chore. Batch-mode arguments. Depot scripts. Debug folders you didn't mean to ship. A Mac build that only a Mac can make.
+Publishing a Unity game to Steam by hand means batch-mode arguments, depot scripts, debug folders you didn't mean to ship, and a Mac build that only a Mac can make.
 
 **Shipyard does all of it for you.** Point it at your project, press Build, press Publish.
 
@@ -28,18 +28,18 @@ No build server. No cloud. No subscription. No sign-up.
 
 ---
 
-## 💬 This is built for you — tell me what you need
+## 💬 Tell me what you need
 
 Shipyard exists to make shipping less painful. If something annoys you, or you want it to do something it doesn't do yet, I want to hear about it.
 
 | | |
 | :-- | :-- |
 | 💬 **[Join the Discord](https://discord.gg/9upSEmQZJv)** | Questions, ideas, or just to say what you're building. No question is too small. |
-| 💡 **[Open an issue](https://github.com/nielss94/Shipyard/issues)** | Bugs, feature requests, rough edges, wishlist items. All welcome, all read. |
+| 💡 **[Open an issue](https://github.com/nielss94/Shipyard/issues)** | Bugs, feature requests, rough edges, wishlist items. I read all of them. |
 
-Feature requests genuinely steer this tool. Ask for things.
+Feature requests steer what gets built next. Ask for things.
 
-**I'm planning to open source Shipyard**, so you can send pull requests directly. If that would make you contribute, say so — it moves the plan up.
+**I'm planning to open source Shipyard**, so you can send pull requests directly. If that would make you contribute, say so. It moves the plan up.
 
 ---
 
@@ -49,19 +49,19 @@ Feature requests genuinely steer this tool. Ask for things.
 
 | | |
 | :-- | :-- |
-| 🪟 **Windows** | `Shipyard-<version>-win-x64-Setup.exe` — installs for your user, no admin prompt. Prefer not to install? Take the `.zip`. |
+| 🪟 **Windows** | `Shipyard-<version>-win-x64-Setup.exe` installs for your user, no admin prompt. Prefer not to install? Take the `.zip`. |
 | 🍎 **macOS** | `Shipyard-<version>-mac-arm64.dmg` for Apple Silicon, `-mac-x64.dmg` for Intel. |
 
 <details>
-<summary><b>⚠️ Windows or macOS blocking it? Click here — it takes 10 seconds</b></summary>
+<summary><b>⚠️ Windows or macOS blocking it? The fix takes 10 seconds</b></summary>
 
 <br>
 
 Shipyard isn't code-signed, and the Mac build isn't notarized. Certificates cost money every year and this tool is free, so the warning is the trade. Your system is telling you the truth: it can't confirm who made this.
 
-**Windows** — SmartScreen says the publisher is unknown. Click **More info** → **Run anyway**.
+**Windows.** SmartScreen says the publisher is unknown. Click **More info**, then **Run anyway**.
 
-**macOS** — right-click the app and choose **Open** instead of double-clicking. If macOS says the app is *damaged*, it isn't. That's what it says about anything downloaded without a certificate:
+**macOS.** Right-click the app and choose **Open** instead of double-clicking. If macOS says the app is *damaged*, it isn't. That's what it says about anything downloaded without a certificate:
 
 ```
 xattr -dr com.apple.quarantine "/Applications/Shipyard.app"
@@ -85,7 +85,7 @@ shasum -a 256 -c SHA256SUMS.txt
 
 **1. Open Shipyard and add your project.** Point it at your Unity project folder.
 
-**2. Let it write your settings.** It reads your Unity version, product name, Steam app id and Build Profiles by itself, then asks you for the few things it can't know — and tells you where in Steamworks to find each answer. Nothing is written until you say yes.
+**2. Let it write your settings.** It reads your Unity version, product name, Steam app id and Build Profiles by itself, then asks you for the few things it can't know. For each one it tells you where in Steamworks to find the answer. Nothing is written until you say yes.
 
 **3. Work through the Get started checklist.** Unity → project → platforms → Steam. Steam can wait; you don't need it to make a build.
 
@@ -93,13 +93,13 @@ shasum -a 256 -c SHA256SUMS.txt
 
 > ### ⚠️ Check this one setting
 >
-> Each platform has an **output path** — where Unity writes the game, and what to call it.
+> Each platform has an **output path**: where Unity writes the game, and what to call it.
 >
 > It must match the executable Steam launches, **exactly**, spaces included. Find it in Steamworks under **Installation → General Installation → Launch Options → Executable**.
 >
-> Nothing can check this for you. Unity will happily write `MyGame.exe` when Steam expects `My Game.exe`, report success, and produce a build that uploads perfectly and then does nothing when a player presses Play. Check it once per platform and you're done forever.
+> Nothing can check this for you. Unity will happily write `MyGame.exe` when Steam expects `My Game.exe`, report success, and produce a build that uploads perfectly and then does nothing when a player presses Play. Check it once per platform and you never have to think about it again.
 >
-> Two things that follow: name the file Unity actually writes (the `.exe`, the `.app` — not the folder), and give each platform its own build folder, because everything in that folder gets shipped.
+> Two things that follow. Name the file Unity actually writes, the `.exe` or the `.app`, not the folder they sit in. And give each platform its own build folder, because everything in that folder gets shipped.
 
 <details>
 <summary><b>What you need installed</b></summary>
@@ -127,7 +127,7 @@ None of this has to be ready before you open the app. Shipyard checks all of it,
 
 - 🎮 **Builds your game** for Windows, macOS and Linux, driving the Unity editor you already have.
 - 🚢 **Uploads to Steam**, generating the build scripts and depot mappings from your project settings.
-- 🧭 **Tells you what this machine can and can't do**, up front — instead of failing halfway through.
+- 🧭 **Tells you what this machine can and can't do** up front, instead of failing halfway through.
 - 🔁 **Carries builds between machines**, so a PC and a Mac can ship one release together.
 - 🛡️ **Stops the releases that break things.** Mixed versions, half-finished uploads, a Mac build packaged on Windows.
 - 📋 **Keeps a record.** Every build stored with its version, its commit and the machine that made it.
@@ -154,7 +154,7 @@ Each platform is its own job, so you can cancel one without touching the others.
 - **One build runs at a time.** A second one waits its turn and says so. Two Unity builds on one machine just make each other slower.
 - **You can leave.** The bottom bar keeps reporting while you use the rest of the app.
 - **Build a specific branch or commit** by naming it. Shipyard checks it out somewhere separate, so whatever you have open and half-finished stays exactly as it is.
-- **Builds** lists everything you've made — platform, version, commit, size, machine. It warns you when your newest builds came from different versions of your code, early enough to be useful.
+- **Builds** lists everything you've made: platform, version, commit, size, machine. It warns you when your newest builds came from different versions of your code, early enough to be useful.
 
 </details>
 
@@ -173,8 +173,8 @@ Each platform is its own job, so you can cancel one without touching the others.
 
 **4. Choose what happens when it finishes.** Neither is preselected:
 
-- **Upload only** — the build lands on Steam and nothing changes for anyone. You press *Set Build Live* yourself when you're ready. This is the default.
-- **Set it live** — everyone on that branch gets it the moment the upload finishes.
+- **Upload only.** The build lands on Steam and nothing changes for anyone. You press *Set Build Live* yourself when you're ready. This is the default.
+- **Set it live.** Everyone on that branch gets it the moment the upload finishes.
 
 **5. Publish.**
 
@@ -185,7 +185,7 @@ Shipyard checks as you go. Anything that would stop the upload shows up before i
 
 <br>
 
-The first time you publish, Shipyard signs you in and asks Steam's questions as they arrive. Your password goes straight to Steam's own tool — it is not stored, not logged, and not kept in the app.
+The first time you publish, Shipyard signs you in and asks Steam's questions as they arrive. Your password goes straight to Steam's own tool. It is not stored, not logged, and not kept in the app.
 
 Steam has three ways of doing the second step, and Shipyard tells you which one you're in:
 
@@ -198,7 +198,7 @@ That last one catches people out, because nothing appears on screen and it looks
 </details>
 
 <details>
-<summary><b>Release templates — turn a release into one click</b></summary>
+<summary><b>Release templates: turn a repeat release into one click</b></summary>
 
 <br>
 
@@ -228,7 +228,7 @@ Windows can't build a Mac game, and a Mac game packaged on Windows will install 
 
 <br>
 
-Shipyard will let you, and will tell you what it means — because the answer surprises people.
+Shipyard will let you, and will tell you what it means, because the answer surprises people.
 
 Promoting a half-finished release makes Steam fill in the missing platforms from whatever was there before. Nothing is left empty, but your players end up with a Windows version and a Mac version built from different versions of your code.
 
@@ -242,9 +242,9 @@ Publishing everything in one go is the only way to be sure that doesn't happen.
 
 **1. Start with Doctor.** Every problem it finds comes with what it means and how to fix it. Most things end here.
 
-**2. Open the Console** at the right of the bottom bar. A failed job keeps its reasons — error, warnings, steps and output, for uploads as well as builds.
+**2. Open the Console** at the right of the bottom bar. A failed job keeps its reasons: error, warnings, steps and output, for uploads as well as builds.
 
-**3. Collect diagnostics**, at the bottom of **Help**. One file describing your setup, settings and recent logs. Passwords and Steam tokens are stripped out, and the file lists what it left out. Nothing is sent anywhere — you get a file, and you decide who sees it.
+**3. Collect diagnostics**, at the bottom of **Help**. One file describing your setup, settings and recent logs. Passwords and Steam tokens are stripped out, and the file lists what it left out. Nothing is sent anywhere. You get a file, and you decide who sees it.
 
 **4. [Ask in Discord](https://discord.gg/9upSEmQZJv) or [open an issue](https://github.com/nielss94/Shipyard/issues).** A diagnostics bundle attached to a report is worth more than anything else you can send.
 
@@ -260,7 +260,7 @@ Four things get refused, and each one exists because someone would otherwise hav
 - **Publishing a release whose platforms came from different versions of your code.**
 - **Trusting Unity when it says it succeeded.** Unity sometimes reports success having built nothing at all. Shipyard checks the game is actually on disk.
 
-Building with uncommitted changes is allowed, with a warning. The build itself is fine — it just means the recorded commit doesn't describe what you shipped.
+Building with uncommitted changes is allowed, with a warning. The build itself is fine. It just means the recorded commit doesn't describe what you shipped.
 
 </details>
 
@@ -272,7 +272,7 @@ Building with uncommitted changes is allowed, with a warning. The build itself i
 - **Your Steam password is never typed into Shipyard.** It goes straight to Steam's own tool.
 - **No auto-update.** Shipyard never phones home. Check [CHANGELOG.md](CHANGELOG.md) when you wonder whether to grab a newer one.
 
-Shipyard adds exactly one file to your project — `publish.config.json`, and only after you approve it. It travels with your game, so your teammates get the same setup.
+Shipyard adds exactly one file to your project, `publish.config.json`, and only after you approve it. It travels with your game, so your teammates get the same setup.
 
 ---
 
