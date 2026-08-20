@@ -9,7 +9,70 @@ for fixes.
 
 ---
 
-## 1.0.0
+## 0.3.0
+
+### Fixed
+
+- **A Mac can build a Windows game after all, if it is a Mono build.** Shipyard used to
+  grey out every Windows platform on a Mac and send you to a PC. That is the right answer
+  for IL2CPP, which cannot cross-compile — but not for Mono, and Unity does offer Windows
+  Mono support for a Mac editor. Set the Windows platform's scripting backend to `Mono2x`
+  and it becomes buildable here: Doctor offers to install the module rather than pointing
+  at another machine, and the Windows depot uploads from the Mac like any other. Mono is a
+  real trade — the game runs slower than IL2CPP and its code is easy to read — so this is
+  a way to release from one machine, not a better default.
+- **Refusals now say which of two reasons applies.** "This platform cannot be built here"
+  covered two unrelated causes: IL2CPP not cross-compiling, and a Mac game losing the
+  permission its binary needs to launch when packaged anywhere else. They are separate
+  rules with separate fixes, and each one now says so — including when it is your own
+  project settings doing the pinning rather than Unity.
+
+### Changed
+
+- **A project's settings no longer record which operating system each platform needs.**
+  Shipyard works that out from the platform and the scripting backend, so nothing is stored
+  that can go stale. Existing projects are unaffected and keep building exactly as they do
+  now. If you want to take the Windows-from-a-Mac route above on a project created before
+  this version, remove `requiresHostOS` from the Windows entry in `publish.config.json` —
+  it is left in place as a deliberate pin, so it still wins where you set it.
+
+---
+
+## 0.2.0
+
+### Downloadable content
+
+- **Build DLC content alongside the game.** A project can declare content builds in
+  `publish.config.json`, and Shipyard runs your own Addressables build method for each
+  platform, then packages the result as its own artifact. Content is built once per
+  platform, because AssetBundles only load on the platform they were built for.
+- **Upload DLC to its own depots.** DLC depots sit beside the game's in the Publish screen,
+  and the install folder each one lands in is shown next to it — that is the path your game
+  hard-codes for its runtime lookup, so it is stated rather than left to be worked out.
+- **A build that leaks DLC into the base game is refused.** If content meant for a DLC depot
+  ends up inside the player, the build fails, names the assets, and produces nothing that
+  could be uploaded. A build that cannot prove it stayed clean is refused too — "the check
+  did not run" and "the check found nothing" are not the same answer.
+- **Content written inside a build folder is rejected before Unity starts.** A player is
+  packaged as its whole build directory, so DLC written under one would ship inside the base
+  game without ever entering the player build. The config refuses that arrangement outright.
+- **Both of Steam's DLC layouts are supported.** Depots under the base game give you one
+  build set live in one act. Depots under the DLC's own app — Steam's "Manage DLC depots
+  separately" — upload as their own build, and Shipyard says so every time, because two
+  Steam builds cannot be set live together and promoting one without the other ships a game
+  missing content it expects.
+
+### Fixed
+
+- **A script that does not compile is no longer reported as a licence problem.** A C# file
+  that builds in the editor but not in a player build produced *"Unity could not activate
+  its licence"* and told you to sign in to Unity Hub, which changed nothing because nothing
+  was wrong with the licence. The failure now reads as a compile error, with the code, the
+  file, and a button to open it.
+
+---
+
+## 0.1.0
 
 The first public release.
 

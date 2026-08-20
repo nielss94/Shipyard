@@ -70,7 +70,7 @@ xattr -dr com.apple.quarantine "/Applications/Shipyard.app"
 **Want to verify the download first?** Every release ships a `SHA256SUMS.txt`. The number should match exactly:
 
 ```
-Get-FileHash .\Shipyard-1.0.0-win-x64-Setup.exe -Algorithm SHA256
+Get-FileHash .\Shipyard-<version>-win-x64-Setup.exe -Algorithm SHA256
 ```
 
 ```
@@ -224,6 +224,17 @@ Windows can't build a Mac game, and a Mac game packaged on Windows will install 
 **4.** Publish both from the Mac, in one upload.
 
 <details>
+<summary><b>Do I actually need two computers?</b></summary>
+
+<br>
+
+For a Mac game, yes — only a Mac can build and upload that one.
+
+For the Windows version it depends on your scripting backend. IL2CPP can't cross-compile, so that needs a PC. **Mono can**, and Unity offers Windows Mono support for a Mac editor — so if your Windows platform is set to `Mono2x`, a Mac can build and publish the whole release on its own. Mono runs slower than IL2CPP and its code is easy to read, so it's a trade, not a free win. Doctor tells you which case you're in.
+
+</details>
+
+<details>
 <summary><b>Can I publish one platform now and the other later?</b></summary>
 
 <br>
@@ -291,7 +302,7 @@ The best thing you can send instead is a bug report or a feature request. [Issue
 
 <br>
 
-Shipyard is free to use, for personal and commercial projects alike, with no limits on what you make with it. The full terms are in [TERMS.md](TERMS.md).
+Shipyard is free to use, for personal and commercial projects alike, with no limits on what you make with it. The full terms are in [LICENSE.md](LICENSE.md).
 
 It's provided as is, without warranty of any kind. Publishing to Steam is your responsibility, and you should check what you're about to release before you release it.
 
