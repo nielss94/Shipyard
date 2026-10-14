@@ -9,6 +9,18 @@ for fixes.
 
 ---
 
+## 0.4.0
+
+- **Far less text on every screen.** Preflight is now one line per problem instead of a
+  box each, with the explanation one click away. The same goes for the background notes on
+  the Build, Builds, Settings and config screens: a short line, and the detail folded under
+  it. The upload button says what pressing it does, including the branch it sets live, so
+  the box that used to repeat that above it is gone.
+- **A missing DLC depot is named as such.** A partial release used to list `macos, macos`
+  when both the macOS player and its DLC were missing; it now says `macos, macos/your-dlc`.
+
+---
+
 ## 0.3.0
 
 ### Fixed

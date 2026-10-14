@@ -1,8 +1,8 @@
-<!-- Paste this into the GitHub release body for the v1.0.0 tag. Fill in the checksums from
+<!-- Paste this into the GitHub release body for the v0.1.0 tag. Fill in the checksums from
      SHA256SUMS.txt once both machines have built, and delete any download row you did not
      actually build. -->
 
-# Shipyard 1.0.0
+# Shipyard 0.1.0
 
 Build your Unity game and publish it to Steam, from your own machine. No build server, no
 cloud service, no account.
@@ -17,10 +17,10 @@ undo.
 
 | Platform | File |
 | --- | --- |
-| Windows | `Shipyard-1.0.0-win-x64-Setup.exe` (installs for your user, no admin prompt) |
-| Windows, no installer | `Shipyard-1.0.0-win-x64.zip` |
-| macOS, Apple Silicon | `Shipyard-1.0.0-mac-arm64.dmg` |
-| macOS, Intel | `Shipyard-1.0.0-mac-x64.dmg` |
+| Windows | `Shipyard-0.1.0-win-x64-Setup.exe` (installs for your user, no admin prompt) |
+| Windows, no installer | `Shipyard-0.1.0-win-x64.zip` |
+| macOS, Apple Silicon | `Shipyard-0.1.0-mac-arm64.dmg` |
+| macOS, Intel | `Shipyard-0.1.0-mac-x64.dmg` |
 
 ## Your computer will warn you
 
@@ -35,7 +35,7 @@ shasum -a 256 -c SHA256SUMS.txt
 ```
 
 ```
-Get-FileHash .\Shipyard-1.0.0-win-x64-Setup.exe -Algorithm SHA256
+Get-FileHash .\Shipyard-0.1.0-win-x64-Setup.exe -Algorithm SHA256
 ```
 
 Then:
